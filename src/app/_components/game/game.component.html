@@ -1,0 +1,36 @@
+<app-players-details></app-players-details>
+<div class="container"   *ngIf="totalBurnt != (random - 1); else gameDone">
+  <div class="row h-100">
+    <div class="col-sm-12 my-auto">
+
+      <div style="text-align: center; color: black; padding: 30px">
+        {{getCurrentPlayer()}}, it's your turn !
+        <br>
+        <button type="button" class="btn btn-info" (click)="burnMatches()" [disabled]="chosenMatches == 0">END TURN</button>
+      </div>
+
+      <button *ngFor="let match of matches; let i = index"
+        [@matchState]="match.state"
+        (click)="chooseMatches(match)"
+        class="matchButton"
+        [disabled]= "match.state === 'burnt'"
+        >
+            <img src="../../../assets/match.png" height="130px" width="40px">
+      </button>
+    </div>
+  </div>
+</div>
+
+<ng-template #gameDone>
+  <div class="container">
+    <div class="row h-100">
+      <div class="col-sm-12 my-auto">
+        <div style="text-align: center; color: black; padding: 30px">
+          Game Over, {{getCurrentPlayer()}} won.
+          <br>
+          <button type="button" class="btn btn-danger" (click)="refreshComponent()">REPLAY</button>
+        </div>
+      </div>
+    </div>
+  </div>
+</ng-template>
