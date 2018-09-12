@@ -40,7 +40,7 @@ export class GameComponent implements OnInit {
   totalBurnt = 0;
 
   ngOnInit() {
-    this.random = Math.floor(Math.random() * 20) + 5;
+    this.random = Math.floor(Math.random() * 40) + 20; // Génère entre 20 et 40 allumettes
     this.playerOne = this.gameService.getPlayerOne();
     this.playerTwo = this.gameService.getPlayerTwo();
     for (this.i = 0; this.i < this.random; this.i++) {
